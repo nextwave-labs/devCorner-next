@@ -3,7 +3,6 @@ import { CodeBlockProps, RenderMDProps } from './RenderMD.utils'
 
 import Markdown from 'markdown-to-jsx'
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
-import nightOwl from 'react-syntax-highlighter/dist/esm/styles/prism/night-owl'
 
 // Import only the languages you need
 import jsx from 'react-syntax-highlighter/dist/esm/languages/prism/jsx'
@@ -39,9 +38,29 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
     <SyntaxHighlighter
       wrapLongLines={true}
       language={language}
-      style={nightOwl}
       customStyle={
-        codeIsInline ? { padding: '0.2rem 0.3rem', borderRadius: '0.3rem' } : {}
+        codeIsInline ?
+          {
+            padding: '0.2rem 0.3rem',
+            borderRadius: '0.3rem',
+            color: 'white',
+            width: '100%',
+            fontFamily:
+              'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
+            textAlign: 'left',
+            whiteSpace: 'pre',
+            wordSpacing: 'normal',
+            wordBreak: 'normal',
+            overflowWrap: 'normal',
+            lineHeight: '1.5',
+            fontSize: '1em',
+            tabSize: '4',
+            hyphens: 'none',
+            margin: '0.5em 0px',
+            overflow: 'auto',
+            background: 'rgb(1, 22, 39)',
+          }
+        : {}
       }
       PreTag={codeIsInline ? 'span' : 'pre'}
     >
