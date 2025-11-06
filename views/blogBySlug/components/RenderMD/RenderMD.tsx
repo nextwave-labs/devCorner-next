@@ -60,7 +60,12 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
             overflow: 'auto',
             background: 'rgb(1, 22, 39)',
           }
-        : {}
+        : {
+            background: 'rgb(1, 22, 39)',
+            color: 'white',
+            padding: '0.5rem 1rem',
+            borderRadius: '0.3rem',
+          }
       }
       PreTag={codeIsInline ? 'span' : 'pre'}
     >
