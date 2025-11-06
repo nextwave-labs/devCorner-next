@@ -97,7 +97,7 @@
 
   & blockquote {
     position: relative;
-    padding: 1rem 0.5rem 1rem 2rem;
+    padding: 0.25rem 0 0.25rem 2rem;
   }
   & blockquote::before {
     position: absolute;
@@ -110,7 +110,7 @@
     border-radius: 0.5rem;
   }
   & blockquote p {
-    font-size: var(--font-md);
+    font-size: var(--font-base);
     font-weight: 600;
     color: var(--color-gray-900);
     font-family: var(--font-primary);
