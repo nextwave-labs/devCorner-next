@@ -1,3 +1,10 @@
+.section_container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+}
 .article-box {
   --article-padding: 1.5rem;
   width: 100%;
@@ -6,9 +13,11 @@
 }
 .article__intro {
   position: relative;
-  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
   align-items: center;
-  flex-flow: column nowrap;
+  width: 100%;
+  display: flex;
   row-gap: 1rem;
   padding: 0 var(--article-padding);
   max-width: 57.5rem;
@@ -87,4 +96,8 @@
   width: 100%;
   max-width: 46.875rem;
   padding: var(--article-padding);
+}
+
+.bg-light {
+  background-color: var(--color-main-light);
 }
