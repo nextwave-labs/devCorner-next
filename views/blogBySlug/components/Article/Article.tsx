@@ -1,10 +1,8 @@
 import styles from './Article.module.css'
 import { Chip } from '@/common/components/Chip'
-import { BG_STYLES_CLASSES } from '@/common/utils/enums'
 import { BlogPost } from '@/common/utils/types/blogPost'
 import { RenderMD } from '../RenderMD'
 import { Author } from '../Author'
-import { AppContainer } from '@/common/layout/AppContainer'
 
 export const Article: React.FC<Omit<BlogPost, 'meta'>> = ({
   title,
@@ -79,21 +77,20 @@ export const Article: React.FC<Omit<BlogPost, 'meta'>> = ({
           <RenderMD MD={blogMd} />
         </div>
       </div>
-      <AppContainer
-        className={styles['article__footer']}
-        bgColor={BG_STYLES_CLASSES.LIGHT}
-        elementType='footer'
-      >
-        <hr />
-        <Author
-          name={author.name}
-          role={author.role}
-          avatar={author.avatar}
-          github={author.githubUrl}
-          linkedIn={author.linkedinUrl}
-          webAddress={author.webAddress}
-        />
-      </AppContainer>
+
+      <div className={`${styles['section_container']} ${styles['bg-light']}`}>
+        <footer className={styles['article__footer']}>
+          <hr />
+          <Author
+            name={author.name}
+            role={author.role}
+            avatar={author.avatar}
+            github={author.githubUrl}
+            linkedIn={author.linkedinUrl}
+            webAddress={author.webAddress}
+          />
+        </footer>
+      </div>
     </article>
   )
 }
