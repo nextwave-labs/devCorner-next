@@ -14,7 +14,7 @@ export const Article: React.FC<Omit<BlogPost, 'meta'>> = ({
   blogMd,
 }) => {
   const tagChips = tags.map((tag) => (
-    <Chip proportion={'sm'} variant='primary' key={tag.id}>
+    <Chip proportion={'md'} variant='primary' key={tag.id} bold={true}>
       {tag.name}
     </Chip>
   ))
