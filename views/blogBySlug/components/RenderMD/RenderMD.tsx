@@ -16,6 +16,7 @@ import yaml from 'react-syntax-highlighter/dist/esm/languages/prism/yaml'
 import python from 'react-syntax-highlighter/dist/esm/languages/prism/python'
 import csharp from 'react-syntax-highlighter/dist/esm/languages/prism/csharp'
 import sql from 'react-syntax-highlighter/dist/esm/languages/prism/sql'
+import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 // Register only the languages you need
 SyntaxHighlighter.registerLanguage('jsx', jsx)
@@ -38,32 +39,9 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
     <SyntaxHighlighter
       wrapLongLines={true}
       language={language}
+      style={nightOwl}
       customStyle={
-        codeIsInline ?
-          {
-            padding: '0.2rem 0.3rem',
-            borderRadius: '0.3rem',
-            color: 'var(--color-gray-900)',
-            fontFamily:
-              'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
-            textAlign: 'left',
-            whiteSpace: 'pre',
-            wordSpacing: 'normal',
-            wordBreak: 'normal',
-            overflowWrap: 'normal',
-            lineHeight: '1.5',
-            fontSize: '1em',
-            tabSize: '4',
-            hyphens: 'none',
-            overflow: 'auto',
-            background: 'var(--color-gray-200)',
-          }
-        : {
-            background: 'var(--color-dark-blue)',
-            color: 'var(--color-dark-green)',
-            padding: '0.5rem 1rem',
-            borderRadius: '0.3rem',
-          }
+        codeIsInline ? { padding: '0.2rem 0.3rem', borderRadius: '0.3rem' } : {}
       }
       PreTag={codeIsInline ? 'span' : 'pre'}
     >
