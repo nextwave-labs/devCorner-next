@@ -43,8 +43,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
           {
             padding: '0.2rem 0.3rem',
             borderRadius: '0.3rem',
-            color: 'white',
-            width: '100%',
+            color: 'var(--color-gray-900)',
             fontFamily:
               'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
             textAlign: 'left',
@@ -56,13 +55,12 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
             fontSize: '1em',
             tabSize: '4',
             hyphens: 'none',
-            margin: '0.5em 0px',
             overflow: 'auto',
-            background: 'rgb(1, 22, 39)',
+            background: 'var(--color-gray-200)',
           }
         : {
-            background: 'rgb(1, 22, 39)',
-            color: 'white',
+            background: 'var(--color-dark-blue)',
+            color: 'var(--color-dark-green)',
             padding: '0.5rem 1rem',
             borderRadius: '0.3rem',
           }
@@ -74,6 +72,14 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
   )
 }
 
+const ScrollableTable: React.FC<CodeBlockProps> = ({ children }) => {
+  return (
+    <div className={styles['scrollable-item']}>
+      <table>{children}</table>
+    </div>
+  )
+}
+
 export const RenderMD: React.FC<RenderMDProps> = ({ MD }) => {
   return (
     <div className={styles[`render-md-box`]}>
@@ -82,6 +88,9 @@ export const RenderMD: React.FC<RenderMDProps> = ({ MD }) => {
           overrides: {
             code: {
               component: CodeBlock,
+            },
+            table: {
+              component: ScrollableTable,
             },
             pre: {
               component: 'div',

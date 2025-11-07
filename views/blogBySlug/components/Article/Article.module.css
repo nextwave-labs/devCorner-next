@@ -12,6 +12,7 @@
   overflow: hidden;
 }
 .article__intro {
+  width: var(--responsive-min-device);
   position: relative;
   flex-flow: column;
   justify-content: flex-start;

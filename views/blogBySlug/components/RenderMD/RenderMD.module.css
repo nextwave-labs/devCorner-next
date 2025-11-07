@@ -1,11 +1,8 @@
 .render-md-box {
-  & * {
-    color: var(--color-gray-800);
-  }
-  & code,
-  code * {
-    color: inherit;
-  }
+  width: 100%;
+
+  color: var(--color-gray-800);
+
   & h1,
   & h2,
   & h3,
@@ -134,7 +131,6 @@
     border-radius: 0.5rem;
     padding: 0.5rem;
     border-collapse: collapse;
-    table-layout: fixed;
   }
   & thead {
     border: 1px solid var(--color-dark-purple);
@@ -184,6 +180,11 @@
     text-decoration: line-through var(--color-dark-green);
   }
 
+  li > span {
+    max-width: 100%;
+    display: inline-flex;
+  }
+
   /* Code  */
   pre {
     border-radius: 1rem;
@@ -192,4 +193,9 @@
     border-radius: 0.5rem;
     font-size: var(--font-sm);
   }
+}
+
+.scrollable-item {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
