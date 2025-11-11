@@ -5,9 +5,6 @@ export const handleAuthors = async () => {
 
   if (result.success === false) {
     /* Needs improvement. handle error properly */
-    console.log('***********************')
-    console.log(result)
-    console.log('***********************')
     console.log('Something happened with authors request')
     return []
   }

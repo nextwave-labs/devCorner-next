@@ -170,9 +170,6 @@ export class StrapiCmsService implements CmsBlogService {
       authentication: `Bearer ${CMS_TOKEN}`,
     })
     if (typeof body === 'string' || body.data === null) {
-      console.log('***********************')
-      console.log('body', body)
-      console.log('***********************')
       const error = errorHandler({ body, status })
       return error
     }
