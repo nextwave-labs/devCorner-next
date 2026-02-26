@@ -40,7 +40,6 @@ export class HttpClient implements IHttpClient {
     path,
     search,
     payload,
-    authentication,
     method,
   }: RequestParams<TRequest>): Promise<
     RequestResponse<TResponse> | RequestResponse<string>
@@ -49,9 +48,6 @@ export class HttpClient implements IHttpClient {
       'Content-Type': 'application/json', // default for our use case
     })
     const requestBody = {}
-    if (authentication) {
-      headers.append('Authorization', authentication)
-    }
     if (payload) {
       Object.assign(requestBody, { body: JSON.stringify(payload) })
     }
@@ -81,7 +77,6 @@ export class HttpClient implements IHttpClient {
   async get<TResponse>({
     path,
     search,
-    authentication,
   }: RequestParams): Promise<
     RequestResponse<TResponse> | RequestResponse<string>
   > {
@@ -91,7 +86,6 @@ export class HttpClient implements IHttpClient {
       result = await this.request<TResponse>({
         path,
         search,
-        authentication,
         method: 'GET',
       })
       return result
