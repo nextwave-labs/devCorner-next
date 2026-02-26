@@ -4,7 +4,6 @@ export interface RequestParams<T = undefined> {
   path: string
   search?: string
   payload?: T
-  authentication?: string
   method?: TMethods
 }
 export interface RequestResponse<T> {

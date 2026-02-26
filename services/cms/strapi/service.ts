@@ -22,8 +22,6 @@ import { Newsletter, NewsletterAttributes } from './types/newsletter'
 import { metaDataAdapter } from './adapters/metaDataAdapter'
 import { env } from '@/envConfig'
 
-const CMS_TOKEN = env.NEXT_PUBLIC_CMS_TOKEN ?? 'Error al extraer el token'
-
 export class StrapiCmsService implements CmsBlogService {
   readonly client: HttpClient
 
@@ -47,7 +45,7 @@ export class StrapiCmsService implements CmsBlogService {
 
       const { body, status } = await this.client.get<
         StrapiResponse<StrapiBlogPost[]> | StrapiErrorResponse
-      >({ path: requestPath, authentication: `Bearer ${CMS_TOKEN}` })
+      >({ path: requestPath })
 
       if (typeof body === 'string' || body.data === null) {
         const error = errorHandler({ body, status })
@@ -87,7 +85,7 @@ export class StrapiCmsService implements CmsBlogService {
     try {
       const { body, status } = await this.client.get<
         StrapiResponse<StrapiBlogPost> | StrapiErrorResponse
-      >({ path: `/blogs/${slug}`, authentication: `Bearer ${CMS_TOKEN}` })
+      >({ path: `/blogs/${slug}` })
 
       if (typeof body === 'string' || body.data === null) {
         const error = errorHandler({ body, status })
@@ -129,10 +127,7 @@ export class StrapiCmsService implements CmsBlogService {
     try {
       const { body, status } = await this.client.get<
         StrapiResponse<StrapiBlogPost[]> | StrapiErrorResponse
-      >({
-        path: `/blogs/filter/${search}`,
-        authentication: `Bearer ${CMS_TOKEN}`,
-      })
+      >({ path: `/blogs/filter/${search}` })
 
       if (typeof body === 'string' || body.data === null) {
         const error = errorHandler({ body, status })
@@ -165,10 +160,7 @@ export class StrapiCmsService implements CmsBlogService {
   async getAuthors(): Promise<CmsRequestResult<Author[]> | CmsRequestError> {
     const { body, status } = await this.client.get<
       StrapiResponse<StrapiAuthor[]> | StrapiErrorResponse
-    >({
-      path: `/authors`,
-      authentication: `Bearer ${CMS_TOKEN}`,
-    })
+    >({ path: `/authors` })
     if (typeof body === 'string' || body.data === null) {
       const error = errorHandler({ body, status })
       return error
@@ -194,7 +186,6 @@ export class StrapiCmsService implements CmsBlogService {
     >({
       method: 'POST',
       path: `/newsletter`,
-      authentication: `Bearer ${CMS_TOKEN}`,
       payload: { email },
     })
     if (typeof body === 'string' || body.data === null) {
