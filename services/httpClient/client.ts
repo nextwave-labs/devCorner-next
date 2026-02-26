@@ -53,7 +53,6 @@ export class HttpClient implements IHttpClient {
     }
     const searchParams = search ? '/?' + search : ''
     const fullUrl = this.url + path + searchParams
-    console.log(this.serviceName + ' request URL: ', fullUrl)
     try {
       const response = await fetch(fullUrl, {
         ...requestBody,
@@ -61,7 +60,6 @@ export class HttpClient implements IHttpClient {
         headers,
       })
       const body: TResponse = await response.json()
-      console.log('Este es el body de la respuesta:', body)
       return {
         error: false,
         status: response.status,
