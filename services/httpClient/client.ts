@@ -52,8 +52,10 @@ export class HttpClient implements IHttpClient {
       Object.assign(requestBody, { body: JSON.stringify(payload) })
     }
     const searchParams = search ? '/?' + search : ''
+    const fullUrl = this.url + path + searchParams
+    console.log(this.serviceName + ' request URL: ', fullUrl)
     try {
-      const response = await fetch(this.url + path + searchParams, {
+      const response = await fetch(fullUrl, {
         ...requestBody,
         method,
         headers,
