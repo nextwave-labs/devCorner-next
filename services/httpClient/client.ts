@@ -61,6 +61,7 @@ export class HttpClient implements IHttpClient {
         headers,
       })
       const body: TResponse = await response.json()
+      console.log('Este es el body de la respuesta:', body)
       return {
         error: false,
         status: response.status,
